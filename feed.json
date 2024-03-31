@@ -10,6 +10,22 @@
     },
     "items": [
         {
+            "id": "https://josemhb.github.io/solucionar-conflictos-con-vibs-actualizando-de-vmware-esxi-55-a-65.html",
+            "url": "https://josemhb.github.io/solucionar-conflictos-con-vibs-actualizando-de-vmware-esxi-55-a-65.html",
+            "title": "Solucionar conflictos con vibs actualizando de VMware ESXi 5.5 a 6.5",
+            "summary": "En la actualización de ESXi 5.5 a 6.5 es probable que te hayas topado con algún error al tener una vib incompatible y el proceso te falle con un error&hellip;",
+            "content_html": "<p data-original-attrs=\"{&quot;style&quot;:&quot;&quot;}\">En la actualización de ESXi 5.5 a 6.5 es probable que te hayas topado con algún error al tener una vib incompatible y el proceso te falle con un error del tipo \"<strong>Conflicting_vibs Error</strong>\".</p>\n<p data-original-attrs=\"{&quot;style&quot;:&quot;&quot;}\">Solucionar este error es sencillo:</p>\n<p data-original-attrs=\"{&quot;style&quot;:&quot;&quot;}\">1º Anota el nombre de las vibs que te generan problemas, ten en cuenta que el nombre que muestra el error es el nombre largo de la vib.<br><br><a data-original-attrs=\"{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCM_EjXdUkDZC-nQA9ac1oJTTr1Frh03BshIVk2r-0kCQDX3e0gM_FAYJxgTQd1H3X1DEVRLgeLlLc45whAvx5q0RAz08pELs12-6rmK3w6s0OVrSkS6_efBMo0-bwKFgcTfS5MFQvwaTM/s1600/error.png&quot;,&quot;style&quot;:&quot;&quot;}\" href=\"https://www.blogger.com/u/1/#\"><img loading=\"lazy\" src=\"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhCM_EjXdUkDZC-nQA9ac1oJTTr1Frh03BshIVk2r-0kCQDX3e0gM_FAYJxgTQd1H3X1DEVRLgeLlLc45whAvx5q0RAz08pELs12-6rmK3w6s0OVrSkS6_efBMo0-bwKFgcTfS5MFQvwaTM/s400/error.png\" width=\"400\" height=\"231\" border=\"0\" data-original-height=\"319\" data-original-width=\"551\" data-is-external-image=\"true\"></a></p>\n<p data-original-attrs=\"{&quot;style&quot;:&quot;&quot;}\"> </p>\n<p data-original-attrs=\"{&quot;style&quot;:&quot;&quot;}\">2º Entra por SSH a tu host ESXi y lista las vibs instaladas:<br><br><code>  esxcli software vib list|grep Mel</code></p>\n<p data-original-attrs=\"{&quot;style&quot;:&quot;&quot;}\"> </p>\n<p data-original-attrs=\"{&quot;style&quot;:&quot;&quot;}\">3º Anota el nombre corto de la vib que necesitarás en el siguiente paso para eliminarla.</p>\n<p data-original-attrs=\"{&quot;style&quot;:&quot;&quot;}\"> </p>\n<p data-original-attrs=\"{&quot;style&quot;:&quot;&quot;}\">4º Elimina la vib que da conflicto con la nueva versión de ESXi:</p>\n<p data-original-attrs=\"{&quot;style&quot;:&quot;&quot;}\"> <code> esxcli software vib remove --vibname=[nombre_corto_vib]</code></p>\n<p data-original-attrs=\"{&quot;style&quot;:&quot;&quot;}\">ejemplo:</p>\n<p data-original-attrs=\"{&quot;style&quot;:&quot;&quot;}\"><code>  esxcli software vib remove --vibname=scsi-lpfc820</code></p>\n<p data-original-attrs=\"{&quot;style&quot;:&quot;&quot;}\">Repite este paso con todas las vibs conflictivas.</p>\n<p data-original-attrs=\"{&quot;style&quot;:&quot;&quot;}\"><br>5º Reinicia el host ESXi. <strong>Es necesario que hagas un reboot desde ESXi no funciona un apagado forzoso o un reset hardware</strong>.</p>\n<p data-original-attrs=\"{&quot;style&quot;:&quot;&quot;}\">6º Ya por último, prueba actualizar tu ESXi.</p>\n<p data-original-attrs=\"{&quot;style&quot;:&quot;&quot;}\"> </p>",
+            "image": "https://josemhb.github.io/media/posts/5/server3.jpg",
+            "author": {
+                "name": "Jose Manuel Hernandez"
+            },
+            "tags": [
+                   "VMware"
+            ],
+            "date_published": "2018-08-03T10:42:00+02:00",
+            "date_modified": "2024-03-31T18:47:01+02:00"
+        },
+        {
             "id": "https://josemhb.github.io/reutilizar-una-ip-flotante-en-openstack.html",
             "url": "https://josemhb.github.io/reutilizar-una-ip-flotante-en-openstack.html",
             "title": "Reutilizar una IP flotante en Openstack",
