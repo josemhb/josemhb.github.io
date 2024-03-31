@@ -3,34 +3,94 @@
     <title>Josemhb Blog</title>
     <link href="https://josemhb.github.io/feed.xml" rel="self" />
     <link href="https://josemhb.github.io" />
-    <updated>2024-03-31T18:03:00+02:00</updated>
+    <updated>2024-03-31T18:32:00+02:00</updated>
     <author>
         <name>Jose Manuel Hernandez</name>
     </author>
     <id>https://josemhb.github.io</id>
 
     <entry>
-        <title>Post de prueba</title>
+        <title>[TIP] Habilitar Transparent Page Sharing (TPS) en VMware ESXi </title>
         <author>
             <name>Jose Manuel Hernandez</name>
         </author>
-        <link href="https://josemhb.github.io/post-de-prueba.html"/>
-        <id>https://josemhb.github.io/post-de-prueba.html</id>
-        <media:content url="https://josemhb.github.io/media/posts/1/casa-917463.jpg" medium="image" />
+        <link href="https://josemhb.github.io/tip-habilitar-transparent-page-sharing-tps-en-vmware-esxi.html"/>
+        <id>https://josemhb.github.io/tip-habilitar-transparent-page-sharing-tps-en-vmware-esxi.html</id>
+        <media:content url="https://josemhb.github.io/media/posts/3/server1.jpg" medium="image" />
 
-        <updated>2024-03-28T19:35:22+01:00</updated>
+        <updated>2015-11-11T18:29:00+01:00</updated>
             <summary>
                 <![CDATA[
-                        <img src="https://josemhb.github.io/media/posts/1/casa-917463.jpg" alt="" />
-                    Probando como funciona esto... Hola
+                        <img src="https://josemhb.github.io/media/posts/3/server1.jpg" alt="server" />
+                    ¡Hola a todos! tras unos meses con mucho trabajo y pocas horas de descanso, por el nacimiento de mi segundo hijo, he vuelto a sacar tiempo para escribir varios artículos.
                 ]]>
             </summary>
         <content type="html">
             <![CDATA[
-                    <p><img src="https://josemhb.github.io/media/posts/1/casa-917463.jpg" class="type:primaryImage" alt="" /></p>
-                <p>Probando como funciona esto...</p>
+                    <p><img src="https://josemhb.github.io/media/posts/3/server1.jpg" class="type:primaryImage" alt="server" /></p>
+                <div data-original-attrs="{&quot;style&quot;:&quot;&quot;}">¡Hola a todos! tras unos meses con mucho trabajo y pocas horas de descanso, por el nacimiento de mi segundo hijo, he vuelto a sacar tiempo para escribir varios artículos. Este es un pequeño TIP para recordaros algo sobre <strong>TPS</strong> de <strong>ESXi</strong>.</div>
+<p><br><br></p>
+<div class="separator" data-original-attrs="{&quot;style&quot;:&quot;&quot;}"><a data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQPEmPKuy0dAwFabdjIl1ErvEKEs5haRFMK22rJM1m3NelWpt-pbjFj1G1kRy-niZPKxaXXDWvJ9FYyGBK1NM6Qr2MERA_Of9-BLh78bQhiOo-oWEsmLBDFBcmAcd-K3hqFuu-F14cO42k/s1600/tps.JPG&quot;,&quot;style&quot;:&quot;&quot;}" href="https://www.blogger.com/u/1/#"><img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiQPEmPKuy0dAwFabdjIl1ErvEKEs5haRFMK22rJM1m3NelWpt-pbjFj1G1kRy-niZPKxaXXDWvJ9FYyGBK1NM6Qr2MERA_Of9-BLh78bQhiOo-oWEsmLBDFBcmAcd-K3hqFuu-F14cO42k/s1600/tps.JPG" border="0" data-original-height="258" data-original-width="316" data-is-external-image="true"></a></div>
 <p> </p>
-<p>Hola</p>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}">Como sabéis, <strong>TPS (Transparent Page Sharing)</strong> es un mecanismo que nos permite ahorrar en el uso de memoria de cada host ESXi guardando en memoria física solo bloques únicos, en muchos casos este ahorro es bastante significativo.</div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}">A partir de la [<a data-original-attrs="{&quot;data-original-href&quot;:&quot;http://kb.vmware.com/selfservice/search.do?cmd=displayKC&amp;docType=kc&amp;docTypeID=DT_KB_1_1&amp;externalId=2080735&quot;}" href="https://www.blogger.com/u/1/#">KB2080735</a>] por motivos de seguridad se decidió deshabilitar por defecto TPS en las posteriores versiones de ESXi. Estos cambios están relacionados con una investigación académica reciente que aprovecha transparente Sharing Página (TPS) para obtener acceso no autorizado a los datos en memoria en determinadas condiciones.</div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}">En algunas instalaciones normales que he estado revisando me he dado cuenta de que no estaba habilitado TPS. En muchos casos y en entornos controlados, si este pequeño problema de seguridad no te afecta, recuerda habilitar TPS en tu plataforma vSphere para optimizar el uso de memoria en tu ESXi.</div>
+<p><br>Puedes hacerlo de dos modos:<br><br><strong>Por GUI</strong>:<br><br>1 – Entrar con el cliente vsphere y seleccionar el host ESXi<br>2 – Seleccionar la ficha configuración y luego configuración avanzada (advanced settings)<br>3 – Haga clic en **Mem**<br>4 – Buscar la variable **Mem.ShareForceSalting** y establezca el valor en **1** para habilitarlo.<br>5 – Pulsar aceptar<br>6 – Migrar todas las máquinas a otro host para poder reiniciar el ESXi sobre el que hemos realizado el cambio.<br>7 – Reiniciar<br><br><strong>Vía Powercli (si tienes muchos esxi):</strong><br><br></p>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}">Si tienes muchos hosts puede que el método anterior sea poco óptimo y lento, para ello VMware ha creado un script (pshare-salting.ps1) que puedes lanzar desde PowerCLI y aplicar este cambio sobre todos los hosts:</div>
+<p><br>*.\pshare-salting.ps1 [vcenter IP/hostname] -s*<br><br><strong>script:</strong></p>
+<pre class="screen"># Configure pshare salting options
+# - Enables / Disables the salting. 
+#
+
+$reboot = 0
+$enable = 0
+$disable = 0
+if ($args.count -gt 0) {
+   $vCenter = $args[ 0 ]
+   for ( $i = 1; $i -lt $args.count; $i++ ) {
+      if ($args[ $i ] -eq "-s") {
+         $enable = 1
+      }
+      if ($args[ $i ] -eq "-o") {
+         $disable = 1
+      }
+   }
+   # override
+   if ($enable -eq 1) {
+      $disable = 0
+   }
+}
+
+# we should specify either -s or -o
+if ($enable -eq 0 ) {
+  if ($disable -eq 0 ) {
+     Write-Host "Usage: ./pshare-salting.ps1  &lt;-s/-o&gt;"
+     Write-Host "-s: turn-on pshare salting (default)"
+     Write-Host "-o: turn-off pshare salting\n"
+     return
+   }
+}
+
+Connect-VIServer $vCenter
+
+$esxHosts = Get-VMHost | Sort Name
+foreach($esx in $esxHosts){
+      # Revert ShareScaGHz to default
+      Set-VMHostAdvancedConfiguration -VMHost $esx -Name Mem.ShareScanGHz -Value 4 -Confirm:$false    
+   if ($enable -eq 1) {
+      Write-Host "Enabling PageShare Salting on $esx"
+      $val = (Get-VMHostAdvancedConfiguration -VMHost $esx -Name Mem.ShareForceSalting).Values
+      Set-VMHostAdvancedConfiguration -VMHost $esx -Name Mem.ShareForceSalting -Value 2 -Confirm:$false    
+   } else {
+      Write-Host "Disabling PageShare Salting on $esx"
+      $val = (Get-VMHostAdvancedConfiguration -VMHost $esx -Name Mem.ShareForceSalting.).Values
+      Set-VMHostAdvancedConfiguration -VMHost $esx -Name Mem.ShareForceSalting -Value 0 -Confirm:$false      
+   }
+}
+</pre>
+<p>Con esto tendrás todos tus hosts con TPS habilitado.<br><br>Hasta la próxima.<br><br></p>
             ]]>
         </content>
     </entry>
