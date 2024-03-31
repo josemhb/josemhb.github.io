@@ -1,0 +1,28 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "Josemhb Blog",
+    "description": "",
+    "home_page_url": "https://josemhb.github.io",
+    "feed_url": "https://josemhb.github.io/feed.json",
+    "user_comment": "",
+    "author": {
+        "name": "Jose Manuel Hernandez"
+    },
+    "items": [
+        {
+            "id": "https://josemhb.github.io/post-de-prueba.html",
+            "url": "https://josemhb.github.io/post-de-prueba.html",
+            "title": "Post de prueba",
+            "summary": "Probando como funciona esto... Hola",
+            "content_html": "<p>Probando como funciona esto...</p>\n<p> </p>\n<p>Hola</p>",
+            "image": "https://josemhb.github.io/media/posts/1/casa-917463.jpg",
+            "author": {
+                "name": "Jose Manuel Hernandez"
+            },
+            "tags": [
+            ],
+            "date_published": "2024-03-28T19:35:22+01:00",
+            "date_modified": "2024-03-31T18:03:00+02:00"
+        }
+    ]
+}

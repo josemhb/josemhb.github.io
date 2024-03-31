@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://josemhb.github.io/sitemap.xml

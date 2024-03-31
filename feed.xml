@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+    <title>Josemhb Blog</title>
+    <link href="https://josemhb.github.io/feed.xml" rel="self" />
+    <link href="https://josemhb.github.io" />
+    <updated>2024-03-31T18:03:00+02:00</updated>
+    <author>
+        <name>Jose Manuel Hernandez</name>
+    </author>
+    <id>https://josemhb.github.io</id>
+
+    <entry>
+        <title>Post de prueba</title>
+        <author>
+            <name>Jose Manuel Hernandez</name>
+        </author>
+        <link href="https://josemhb.github.io/post-de-prueba.html"/>
+        <id>https://josemhb.github.io/post-de-prueba.html</id>
+        <media:content url="https://josemhb.github.io/media/posts/1/casa-917463.jpg" medium="image" />
+
+        <updated>2024-03-28T19:35:22+01:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://josemhb.github.io/media/posts/1/casa-917463.jpg" alt="" />
+                    Probando como funciona esto... Hola
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://josemhb.github.io/media/posts/1/casa-917463.jpg" class="type:primaryImage" alt="" /></p>
+                <p>Probando como funciona esto...</p>
+<p> </p>
+<p>Hola</p>
+            ]]>
+        </content>
+    </entry>
+</feed>
