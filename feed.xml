@@ -3,7 +3,7 @@
     <title>Josemhb Blog</title>
     <link href="https://josemhb.github.io/feed.xml" rel="self" />
     <link href="https://josemhb.github.io" />
-    <updated>2024-03-31T18:47:01+02:00</updated>
+    <updated>2024-03-31T19:05:36+02:00</updated>
     <author>
         <name>Jose Manuel Hernandez</name>
     </author>
@@ -45,6 +45,126 @@
 <p data-original-attrs="{&quot;style&quot;:&quot;&quot;}"><br>5º Reinicia el host ESXi. <strong>Es necesario que hagas un reboot desde ESXi no funciona un apagado forzoso o un reset hardware</strong>.</p>
 <p data-original-attrs="{&quot;style&quot;:&quot;&quot;}">6º Ya por último, prueba actualizar tu ESXi.</p>
 <p data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </p>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>¿Que es LBaaS?</title>
+        <author>
+            <name>Jose Manuel Hernandez</name>
+        </author>
+        <link href="https://josemhb.github.io/que-es-lbaas.html"/>
+        <id>https://josemhb.github.io/que-es-lbaas.html</id>
+        <media:content url="https://josemhb.github.io/media/posts/6/network.jpg" medium="image" />
+            <category term="Openstack"/>
+
+        <updated>2016-09-26T12:55:00+02:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://josemhb.github.io/media/posts/6/network.jpg" alt="networking" />
+                    LBaaS es el servicio de Openstack que nos permite disponer de un balanceador de carga como servicio. Para quienes no sepan que es un balanceador de carga, es una tecnología&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://josemhb.github.io/media/posts/6/network.jpg" class="type:primaryImage" alt="networking" /></p>
+                <h2 data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </h2>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"><strong>LBaaS</strong> es el servicio de Openstack que nos permite disponer de un balanceador de carga como servicio.</div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}">Para quienes no sepan que es un balanceador de carga, es una tecnología que permite disponer de un servidor virtual con una IP, este servidor virtual está respaldado por un grupo de servidores reales que proporcionan algún recurso a los clientes. La función del balanceador es distribuir las peticiones de cliente a través del grupo de servidores, esta distribución se puede hacer en base a varios algoritmos tal como:</div>
+<ul data-original-attrs="{&quot;style&quot;:&quot;&quot;}">
+<li><strong>Round Robin:</strong> Selecciona servidores secuencialmente. Es el algoritmo predeterminado.</li>
+<li><strong>Leastconn:</strong> Selecciona el servidor con el menor número de conexiones – se recomienda para las sesiones más largas.</li>
+<li><strong>Source:</strong> Selecciona el servidor que se desea utilizar en función de un hash de la IP de origen, es decir, la dirección IP del usuario. Es un método para asegurar que un usuario se conecte siempre al mismo servidor.</li>
+<li><strong>Sticky Sessions:</strong> Algunas aplicaciones requieren que un usuario continúe accediendo al mismo servidor de backend. Esta persistencia se logra a través de las sticky sessions, utilizando el parámetro appsession en el backend que lo requiera.</li>
+</ul>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}">Otra características de los balanceadores es la detección de fallos en un servidor y su capacidad de eliminar una ruta hacia este, cuando esto sucede los clientes no se enteran del fallo en el servidor real ya que se redirigen a otro servidor operativo.</div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </div>
+<div class="separator" data-original-attrs="{&quot;style&quot;:&quot;&quot;}"><a data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYERMpJ_arRbteP4DOZEoZrZ6vwy5pRiqe98nPvpS_lUDrNneLXbbfJus0fW0u-d6C355XtVZ7JL_VayrLb8P_A8gFKjYH3wQVc2cI8zlL6YZe3_3JCijXCBa9_QKO3l8jhFsTxMF6nIF9/s1600/loadbalancer.png&quot;,&quot;style&quot;:&quot;&quot;}" href="https://www.blogger.com/u/1/#"><img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiYERMpJ_arRbteP4DOZEoZrZ6vwy5pRiqe98nPvpS_lUDrNneLXbbfJus0fW0u-d6C355XtVZ7JL_VayrLb8P_A8gFKjYH3wQVc2cI8zlL6YZe3_3JCijXCBa9_QKO3l8jhFsTxMF6nIF9/s400/loadbalancer.png" width="400" height="161" border="0" data-original-height="254" data-original-width="630" data-is-external-image="true"></a></div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}">En resumen, las funciones principales de los balanceadores de carga son atender las solicitudes de los clientes mitigando los problemas de cuellos de botella al repartir la carga entre varios nodos y evitar los fallos cuando un servidor de un pool cae, aportando alta disponibilidad.</div>
+<h2 data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </h2>
+<h2 data-original-attrs="{&quot;style&quot;:&quot;&quot;}">OpenStack LBaaS</h2>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}">Actualmente en Openstack la implementación de balanceadores de carga corre a cargo del proyecto Neutron el cuál implementa la versión 2 de <strong>LBaaS</strong>. Este servicio permite configurar un balanceador que se ejecuta fuera de las instancias y dirige el tráfico hacia ellas en función de la configuración realizada.</div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}">El servicio <strong>OpenStack LBaaS</strong> lo presta un conocido software de código abierto como es <strong>HAProxy</strong>. HAProxy proporciona balanceo de carga TCP/HTTP y es el que utiliza por defecto OpenStack. No obstante, desde la v2 existe la opción de utilizar una implementación alternativa de LBaaS llamada [<a data-original-attrs="{&quot;data-original-href&quot;:&quot;https://wiki.openstack.org/wiki/Octavia&quot;}" href="https://www.blogger.com/u/1/#">Octavia</a>] la cuál está totalmente integrada con Neutron y LBaaS v2.</div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}">A continuación podemos ver un vídeo demostrativo de LBaaS por gentileza de Rackspace:</div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}">
+<figure class="post__video"><iframe loading="lazy" width="560" height="314" src="https://www.youtube.com/embed/C512TQIplfs" allowfullscreen="allowfullscreen"></iframe></figure>
+</div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}">Espero que os haya resultado interesante.</div>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Integración Openstack – Nutanix</title>
+        <author>
+            <name>Jose Manuel Hernandez</name>
+        </author>
+        <link href="https://josemhb.github.io/integracion-openstack-nutanix.html"/>
+        <id>https://josemhb.github.io/integracion-openstack-nutanix.html</id>
+        <media:content url="https://josemhb.github.io/media/posts/7/server4.jpg" medium="image" />
+            <category term="Openstack"/>
+            <category term="Nutanix"/>
+
+        <updated>2016-07-07T12:04:00+02:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://josemhb.github.io/media/posts/7/server4.jpg" alt="" />
+                    Últimamente he estado algo atareado y con poco tiempo para escribir, esta vez quería hablar sobre la sencilla integración de los equipos hiperconvergentes de Nutanix con Openstack. Hace poco tuvimos&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <p><img src="https://josemhb.github.io/media/posts/7/server4.jpg" class="type:primaryImage" alt="" /></p>
+                <div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"><a data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxCGe45Y2wGYCgV3DP6g8w-OpRQI_VeR0KOlZNA37fUpbqqW9-b7mcgaOhgqUWyxC_rnw5Z3OGmJVBXZ15rivcv0CwtQUIiI_aQJ8BQjTnV4EUXX8RlElM7xFMdCAzEumm6n3g9kuaYcKA/s1600/Opens-nutanix-768x216.png&quot;,&quot;style&quot;:&quot;&quot;}" href="https://www.blogger.com/u/1/#"><figure class="align-center"><img loading="lazy"  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxCGe45Y2wGYCgV3DP6g8w-OpRQI_VeR0KOlZNA37fUpbqqW9-b7mcgaOhgqUWyxC_rnw5Z3OGmJVBXZ15rivcv0CwtQUIiI_aQJ8BQjTnV4EUXX8RlElM7xFMdCAzEumm6n3g9kuaYcKA/s400/Opens-nutanix-768x216.png" width="400" height="110" border="0" data-original-height="216" data-original-width="768" data-is-external-image="true"></figure></a></div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}">Últimamente he estado algo atareado y con poco tiempo para escribir, esta vez quería hablar sobre la sencilla integración de los equipos hiperconvergentes de <strong>Nutanix</strong> con <strong>Openstack</strong>.</div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}">Hace poco tuvimos el gusto de probar durante un mes un par de equipos por gentileza de Nutanix Iberia y la verdad que funcionan de maravilla.</div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}">Si aún no sabes de que va el tema de la hiperconvergencia y Nutanix, te recomiendo que leas los siguientes artículos:</div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"><a data-original-attrs="{&quot;data-original-href&quot;:&quot;http://www.tundra-it.com/que-es-nutanix/&quot;}" href="https://www.blogger.com/u/1/#">¿Que es Nutanix?</a></div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"><a data-original-attrs="{&quot;data-original-href&quot;:&quot;http://blog.e2h.net/2013/04/30/nutanix-la-evolucion-del-centro-de-datos/&quot;}" href="https://www.blogger.com/u/1/#">Nutanix la evolución del centro de datos</a></div>
+<h2 data-original-attrs="{&quot;style&quot;:&quot;&quot;}">Arquitectura</h2>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </div>
+<div class="separator" data-original-attrs="{&quot;style&quot;:&quot;&quot;}"><a data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiuahLqSps1_EmalZ0sbb2oQTKf2Sks9cND_B4oUzgDXT0Kyz4G45B5XwFgxCaWMFk9lxAyCxjVs9gXOiHIXZXMr2lid1tLZ_0SJcckWdwD1dVQC0VKzTt7d-bN9NjW6-M-n4Xw1KeUamCs/s1600/nutanix-2-768x311.png&quot;,&quot;style&quot;:&quot;&quot;}" href="https://www.blogger.com/u/1/#"><img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiuahLqSps1_EmalZ0sbb2oQTKf2Sks9cND_B4oUzgDXT0Kyz4G45B5XwFgxCaWMFk9lxAyCxjVs9gXOiHIXZXMr2lid1tLZ_0SJcckWdwD1dVQC0VKzTt7d-bN9NjW6-M-n4Xw1KeUamCs/s640/nutanix-2-768x311.png" width="640" height="258" border="0" data-original-height="311" data-original-width="768" data-is-external-image="true"></a></div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}">Nutanix ha trabajado bastante la integración con Openstack y para conseguirla ha desarrollado dos componentes que paso a describir:</div>
+<ul data-original-attrs="{&quot;style&quot;:&quot;&quot;}">
+<li><strong>Acropolis OpenStack Driver:</strong><br>Son drivers que puedes configurar en los nodos de control de Openstack o usar los que trae la máquina OVM preinstalados, su cometido es traducir las llamadas del nodo de control Openstack a la API REST nativa de Acrópolis.</li>
+</ul>
+<div class="separator" data-original-attrs="{&quot;style&quot;:&quot;&quot;}"><a data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFuMcxQYWRSNARC4ydY3awCuy3mZXrIu1pRffa85LeBkiKjBsLMZPPTVqITR8FgSvoRz1EzIYtXjkJCrqZTWPddg61Fj_mCyybmhzGFd2tL2yEGlg1duXE_whbeiM-BdD3VizTgpqQoyp5/s1600/nutanix51-768x194.png&quot;,&quot;style&quot;:&quot;&quot;}" href="https://www.blogger.com/u/1/#"><img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFuMcxQYWRSNARC4ydY3awCuy3mZXrIu1pRffa85LeBkiKjBsLMZPPTVqITR8FgSvoRz1EzIYtXjkJCrqZTWPddg61Fj_mCyybmhzGFd2tL2yEGlg1duXE_whbeiM-BdD3VizTgpqQoyp5/s640/nutanix51-768x194.png" width="640" height="160" border="0" data-original-height="194" data-original-width="768" data-is-external-image="true"></a></div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </div>
+<ul data-original-attrs="{&quot;style&quot;:&quot;&quot;}">
+<li><strong>Acropolis OpenStack Services VM (OVM)</strong>:<br>Es una máquina virtual proporcionada por Nutanix que se ejecuta en cualquier nodo dentro de nuestro clúster y viene configurada con el driver de Acropolis para comunicar con Openstack, OVM facilita el despliegue de Openstack ya que trae los servicios de un controlador Openstack pre-instalados y listos para funcionar. Una vez configurada el cliente puede conectarse de modo habitual al controlador vía Horizon, SDK, CLI o API.</li>
+</ul>
+<div class="separator" data-original-attrs="{&quot;style&quot;:&quot;&quot;}"><a data-original-attrs="{&quot;data-original-href&quot;:&quot;https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjecYbuTrvGOYGihQXNXUTrUc4vSIsH6dr4dguFImCq5j7oveAr6za7garBkfPNrWDK-LCLeBjtL993i_9qxE9yw4bsBDpbcm8EkVBX74j_5asS37RPAFg97ZZpgguE1_7ccdK6PJ3xZ-S5/s1600/nutanix04-768x323.png&quot;,&quot;style&quot;:&quot;&quot;}" href="https://www.blogger.com/u/1/#"><img loading="lazy" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjecYbuTrvGOYGihQXNXUTrUc4vSIsH6dr4dguFImCq5j7oveAr6za7garBkfPNrWDK-LCLeBjtL993i_9qxE9yw4bsBDpbcm8EkVBX74j_5asS37RPAFg97ZZpgguE1_7ccdK6PJ3xZ-S5/s640/nutanix04-768x323.png" width="640" height="267" border="0" data-original-height="323" data-original-width="768" data-is-external-image="true"></a></div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </div>
+<h3 data-original-attrs="{&quot;style&quot;:&quot;&quot;}">Ventajas de Openstack con Nutanix</h3>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}">A continuación describo algunas de las <strong>ventajas</strong> de desplegar Openstack con Nutanix:</div>
+<ul data-original-attrs="{&quot;style&quot;:&quot;&quot;}">
+<li><strong>Instalación rápida y sencilla: </strong>Al usar bloques HCI reducimos los tiempos de puesta en marcha y simplificamos la instalación de cómputo y almacenamiento.</li>
+<li><strong>Scale-out sencillo:</strong> Se puede escalar fácilmente tanto en computación como en almacenamiento expandiendo el clúster con un solo clic.</li>
+<li><strong>Autotiering con discos SSD y SATA:</strong> Capacidad automática de almacenar los datos calientes en disco SSD y los datos fríos en disco SATA.</li>
+<li><strong>Compresión y Deduplicación en almacenamiento:</strong> Permitiendo un ahorro de espacio considerable.</li>
+<li><strong>Integración Nova + Glance con NDFS Fast-clones:</strong> Al aprovechar esta capacidad se reducen drásticamente los tiempos de creación de instancias, permitiendo crear decenas de instancias totalmente operativas en menos de un minuto.</li>
+<li><strong>Alta disponibilidad y balanceo de carga:</strong> Ideal para aplicaciones Legacy las cuales no son cloud native y no pueden funcionar en modo stateless.</li>
+<li><strong>Monitorización end to end de toda la infraestructura:</strong> Permitiendo detectar fallos o problemas en cualquier componente hardware.</li>
+<li><strong>Gestión de la capacidad:</strong> Prism ahora también ofrece la planificación de capacidad predicativa, lo que le permite ver fácilmente en base a sus tasas de crecimiento cuándo necesitará ampliar la capacidad de su infraestructura.</li>
+</ul>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}">Aquí os dejo un pequeño vídeo demostrativo que hice para ver lo bien y rápido que funciona Openstack sobre plataforma hiperconvergente Nutanix.<br><br>
+<figure class="post__video"><iframe loading="lazy" width="560" height="314" src="https://www.youtube.com/embed/vudzPvU-UvY" allowfullscreen="allowfullscreen"></iframe></figure>
+</div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}">La verdad que será una opción a tener en cuenta en futuros despliegues de Openstack.</div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}"> </div>
+<div data-original-attrs="{&quot;style&quot;:&quot;&quot;}">Mas info en <a data-original-attrs="{&quot;data-original-href&quot;:&quot;http://nutanix.com/&quot;}" href="https://www.blogger.com/u/1/#">Nutanix.com</a></div>
             ]]>
         </content>
     </entry>
